@@ -1,0 +1,111 @@
+
+// GLOBALS
+
+@mixin container {
+    background-color: $labels-bg-color;
+    color: $labels-text-color;
+    width: 100%;
+} 
+
+@mixin footer {
+    @include container;
+    @include flex($justify:flex-start);
+    color: white;
+}
+
+@mixin flex-center ($direction, $justify: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
+}
+
+@mixin text($size, $height) {
+    font-size: $size;
+    line-height: $height;
+}
+
+
+// MOBILE 
+
+@mixin hero {
+    position: relative;
+    top: 4.5rem;
+    width: 100vw;
+    height: 11.4375rem;
+}
+
+@mixin images-M($vertical: .5rem, $horizontal: 1rem) {
+    width: 90%; /* 18rem; */
+    height: auto;
+    margin: $vertical $horizontal;
+}
+
+@mixin heading-M {
+    @include text(1.5rem, 2rem) 
+}
+
+@mixin subheading-M($top:2rem, $right: 1rem, $bottom: 1.5rem, $left: 1rem) {
+    font-size: 14px;
+    line-height: 22px;
+    color: $Global-text-color;
+    margin: $top, $right, $bottom, $left;
+}
+
+@mixin h4-text-M {
+    font-size: 13px;
+    line-height: 18px;
+}
+@mixin prg-column {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+@mixin bg-img {
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover;
+}
+
+@mixin img-tab-desk {
+    width: 21.5rem;
+     height: 12.0625rem;
+     margin: 1.5rem 0.75rem
+}
+// @MEDIA QUERIES
+
+@mixin desk {
+    @media screen and (min-width: $desk-bk-point) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-bk-point) {
+      @content;
+    }
+  }
+
+  @mixin nav-trans {
+    @media screen and (min-width: 340px) and (max-width: 767px){
+        @content;
+    }
+  }
+
+  @mixin med-trans {
+    @media screen and (min-width: 321px) and (max-width:767px) {
+      @content;
+    }
+  }
+
+  @mixin text-trans {
+    @media screen and (min-width: 564px) and (max-width:767px) {
+      @content;
+    }
+  }
+
+  @mixin trans-tab-desk {
+      @media screen and (min-width: 806px) and (max-width: 1199px){
+          @content;
+      }
+  }

@@ -1,0 +1,530 @@
+@import './partials/variables';
+@import '../styles/partials/mixin';
+@import './partials/font-face';
+
+
+// The units conversion from "absolute units" to 'relative units'
+// was made using the following formula
+//    ====>  px / (screen size / 100) = relative unit %  <=====
+
+
+
+                // GLOBAL
+
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  
+
+                //  UTILITY CLASSES
+
+.bold-flex{
+    font-family: "Avenir-Next-bold";
+    @include flex-center(column, flex-start)
+}
+
+.demi{
+    font-family: "Avenir-Next-demi";
+}
+
+
+                    // HEADER & NAV
+
+.logo{
+    align-self: center;
+    justify-self: center;
+    width: 42.25%;
+    height: 40%;
+    background-image: url("../Assets/Logo/Logo.svg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.nav__container{
+    position: fixed;
+    top: 0;
+    height: 5rem;
+    @include container;
+    display: flex;
+    z-index: 3;
+}
+
+.nav{
+    @include flex-center(column);
+
+        @include nav-trans{
+            display: inline-flex;
+            flex-direction: row;
+        }
+
+        @include tablet{
+            margin-left: 1.5rem;
+            width: 48.5%;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+        }
+        
+        @include desk{
+            margin-left: $margin-left-desk;
+        }
+}
+
+.links__container {
+  @include flex-center(row);
+  width: 100%;
+  list-style: none;
+  padding: 0;
+
+    @include nav-trans{
+        margin-left: 1.5rem;
+        display: inline-flex; 
+    }
+
+    @include desk{
+        width: 14.75rem;
+        margin-left: 3.5rem;
+    }
+}
+
+.nav__links{
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    @include text(.875rem, 1.375rem);
+
+        @include nav-trans{
+            width: 6.25rem;
+            padding-top: 2.375rem;
+            padding-bottom: 1.4375rem
+        }
+
+        a{
+            text-decoration: none;
+
+                &:visited{
+                    color: white;  
+                }
+        }
+        
+        &:hover{
+            color: white;
+            border-bottom: 1.5px solid white;
+        }
+
+        @include tablet{
+            width: 6.25rem;
+            padding-top: 2.375rem;
+            padding-bottom: 1.4375rem;
+        }
+
+        @include desk{
+            margin-right: 3.5rem;
+        }
+}
+
+
+                    // HERO
+
+.hero__image {
+    @include hero;
+    @include flex-center(row);
+    background-image: url('../Assets/Images/hero.jpg');
+    @include bg-img;
+
+    @media screen and (min-width: 490px) and (max-width:767px){
+        text-align: center;
+        background-position: bottom;
+
+    }
+
+    &::after{
+        content: url();
+        background-color:rgba($color: #000000, $alpha: 0.50%);
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        
+    }
+        @include tablet{
+            height: 25rem;
+        }     
+}
+
+.hero__heading{
+    color: white;
+    @include heading-M;
+    width: 75vw;
+    transform: translate(-1.5rem);
+    z-index: 2;
+
+        @include tablet{
+            @include text(3.75rem, 4.25rem);
+            transform: translateX(-4rem);
+        }
+
+        @include desk{
+            margin-left: $margin-left-desk;
+        }
+}
+
+
+                        // MAIN
+
+.blog{
+    position: relative;
+    top: 4.5rem;
+}
+
+.blog__heading{
+    @include heading-M;
+    margin: 2rem 1rem 1.5rem;
+
+        @include tablet{
+            @include text(2.25rem, 2.75rem);
+            margin-left: 1.5rem;
+        }
+
+        @include desk {
+            margin: 3rem 0 3rem $margin-left-desk;
+
+        }
+}
+
+.blog__subheading{
+    @include subheading-M;
+
+        @include text-trans{
+            @include text(1.5rem, 2rem);
+        }
+
+        @include tablet{
+            @include text(1.5rem, 2rem);
+            margin: 3rem 1.5rem;
+        }
+ }
+ .blog__quote{
+    margin: 1.5rem 1rem 2rem;
+
+    @include tablet{
+        margin-left: 1.5rem;
+    }
+
+    @include desk{
+        width: 47.5rem;
+        align-self: flex-start;
+        margin:2.5rem 0 2.5rem $margin-left-desk;
+    }
+
+ }
+ .blog__quote__author{
+    margin: 0 1rem 2.5rem;
+
+    @include tablet{
+        margin-left: 1.5rem;
+    }
+    @include desk{
+        align-self: flex-start;
+        margin-left: $margin-left-desk;
+        margin-bottom: 3.5rem;
+    }
+
+ }
+ .blog__bio__title{
+    margin: 0 1rem 1.5rem;
+
+    @include tablet{
+        margin-left: 1.5rem;
+    }
+
+    @include desk{
+        margin: 0 0 2rem $margin-left-desk;
+    }
+ }
+
+ .blog__paragraph{
+     @include h4-text-M;
+     margin: 0 1rem 1.5rem;
+     font-family: "Avenir-Next";
+
+     @include text-trans{
+        @include text(.875rem, 1.375rem)
+
+     }
+     @include tablet{
+        margin-left: 1.5rem;
+        margin-right: 0;
+        width: auto;
+        @include text(.875rem, 1.375rem)
+    }
+    @include desk{
+        width: 26.25rem;
+    }
+
+ }
+ .blog__paragraph--mod{
+     margin-top: 0;
+     margin-bottom: 2.5rem;
+
+        @include tablet{
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+        @include desk{
+            margin-left: 2.5rem;
+        }
+
+ }
+ .paragraph__container{
+    
+        @include text-trans{
+            @include prg-column;
+        }
+        @include tablet{
+            @include prg-column;
+        }
+        @include desk{
+            width: 56rem;
+            @include flex-center(row);
+            align-self: center;
+            margin-bottom: 3rem;
+        }
+ }
+
+ .blog__img{
+    @include images-M(0);
+    display: flex;
+
+        @include tablet{
+            width: 45rem;
+            height: 22.625rem;
+            margin: 0 1.5rem 0;
+        }
+
+        @include desk{
+            width: 56rem;
+            height: 28.125rem;
+            align-self: center;
+        }
+        @include trans-tab-desk {
+            width: 90%;
+            height: 28.125rem;
+        }
+ }
+
+ .blog__bg{
+    display: flex;
+    flex-direction: column;;
+    background-color: $text-bg-field-color;
+    border: $field-border;
+ }
+
+
+                        //  PHOTO GALLERY
+
+.img__container{
+    
+    @include med-trans{
+        @include flex-center(column);
+    }
+
+    @include tablet{
+        margin: 0 0.5rem;
+    }
+    @include desk {
+        margin-top: 4rem;
+        margin-bottom: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    @include trans-tab-desk{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;;
+        align-items: center;
+
+    }
+}
+
+.img{
+    @include images-M;
+
+        @include tablet{
+            width: 14rem;
+            height: 7.875rem;
+            margin: 1rem 0.75rem;
+        }
+        @include desk{
+            @include img-tab-desk;
+        }
+
+        @include trans-tab-desk{
+            @include img-tab-desk;
+        }
+}
+
+
+
+                                // FOOTER
+
+.footer{
+    @include container;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    top: 5rem;   
+} 
+
+.footer__top{
+
+    @include med-trans{
+      display: flex;
+      justify-content: space-around;
+    }
+
+    @include tablet{
+        display: inline-flex;
+        margin: 2.5rem .5rem 0;
+    }
+    @include desk{
+        margin-top: 3rem;
+    }
+
+}
+.footer__heading{
+    padding-top: 2.5rem;
+    margin: 0 1rem 1rem 1rem;
+    color: white;
+
+        @include tablet{
+            @include text(2.25rem, 2.75rem);
+            width: 14rem;
+            padding-top: 1rem;
+        }
+        @include desk{
+            padding-top: 0;
+            margin-bottom: 2.125rem;
+            margin-left: 2.1875rem;
+        }
+} 
+
+.footer__icons{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+    width: 41.25%;
+
+        @include  tablet{
+            justify-content: space-around;
+            width: 9.25rem;
+            height: 2.75rem;
+        }
+        @include desk{
+            width: 7.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+}
+
+.footer__logo{
+    display: none;
+
+        @include tablet{
+            align-self: center;
+            width: 174px;
+            display: flex;
+            position: relative;
+            left: 15%;
+        } 
+        @include desk{
+            width: 7rem;
+            height: 1.5rem;
+            position: relative;
+            left: 51%;
+        }
+
+}
+.contact__container{
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+        
+        @include med-trans{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            font-size: 1.5rem;
+            margin: 1.5rem;
+        }
+        
+        @include tablet {
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 1.875rem;
+        }
+        @include desk{
+            width: 44.5rem;
+            margin: 0 0 2.5rem 2.5rem;
+        }
+        @include trans-tab-desk{
+            display: flex;
+            justify-content:space-around;
+        }
+  
+
+.footer__contact{
+    @include h4-text-M;
+    color: white;
+    @include text(14px, 20px);
+
+        @include tablet{
+            @include text(0.875rem, 1.375rem);
+            width: 14rem;
+        }
+        & h4{
+            margin: 0;
+        }
+    }
+}
+
+.contact__address{
+        margin-top: 1.5rem;
+}
+.contact__email{
+    margin-top: 1.5rem;
+}
+
+.footer__rights{
+    margin-left: 1rem;
+    color: white;
+
+        & h5:last-child{
+        padding-bottom: 4rem;
+    }
+        @include med-trans{
+            display: flex;
+            flex-direction: row;
+            margin-top: 2rem;
+        }
+
+        @include tablet{
+            display: inline-flex;
+        }
+        @include desk{
+            margin-left: 2.1875rem;
+        }
+}
+
+        
