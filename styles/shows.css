@@ -55,6 +55,8 @@
   z-index: 2;
   color: white;
   font-family: "Avenir-Next-bold";
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .hero__shows--subheading {
@@ -62,5 +64,70 @@
   line-height: 22px;
   color: white;
   font-family: "Avenir-Next-bold";
+  margin-top: 4rem;
+  margin-left: 1rem;
+}
+
+.hero__song {
+  z-index: 2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 4rem;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.subHeading {
+  font-size: 24px;
+  line-height: 32px;
+  color: #323232;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 2rem 0 2.5rem 1rem;
+}
+
+.container {
+  width: 18rem;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.title {
+  color: #AFAFAF;
+  font-family: "Avenir-Next-demi";
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.paragraph {
+  font-family: "Avenir-Next";
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.container__date {
+  font-family: "Avenir-Next-bold";
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section__btn {
+  width: 18rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  background-color: #323232;
+  color: white;
 }
 /*# sourceMappingURL=shows.css.map */

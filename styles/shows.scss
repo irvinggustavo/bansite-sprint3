@@ -3,6 +3,10 @@
 @import './partials/font-face';
 
 
+// .nav__links--shows{
+
+// }
+
 .hero_shows{
     background-image: url("../Assets/Images/hero-shows.jpg");
     width: 100vw;
@@ -28,10 +32,67 @@
     z-index: 2;
     color: white;
     font-family: "Avenir-Next-bold";
-    width: ;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
+
 .hero__shows--subheading{
     @include text(14px, 22px);
     color: white;
     font-family: "Avenir-Next-bold";
+    margin-top: 4rem;
+    margin-left: 1rem;
+}
+
+.hero__song{
+    z-index: 2;
+    align-self: center;
+    margin-top: 4rem;
+}
+
+
+// MAIN
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subHeading{
+    @include text(24px, 32px);
+    color: #323232;
+    align-self: flex-start;
+    margin:2rem 0 2.5rem 1rem;
+}
+
+.container{
+    width: 18rem;
+    border-bottom: 1px solid $divider;
+}
+
+.title{
+    color: $labels-text-color;
+    font-family: "Avenir-Next-demi";
+    @include text(14px, 22px)
+}
+
+.paragraph{
+    font-family: "Avenir-Next";
+    @include text(13px, 18px)
+}
+
+.container__date{
+    font-family: "Avenir-Next-bold";
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section__btn{
+    width: 18rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    background-color: #323232;
+    color: white;
 }
