@@ -89,10 +89,5 @@ main{
 }
 
 .section__btn{
-    width: 18rem;
-    height: 3rem;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-    background-color: #323232;
-    color: white;
+    @include btn (18rem);
 }

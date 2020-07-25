@@ -72,6 +72,23 @@
      height: 12.0625rem;
      margin: 1.5rem 0.75rem
 }
+
+@mixin inputs {
+    // margin-left: 1rem;
+    // margin-right: 1rem;
+    width: 14rem;
+}
+
+@mixin btn ($width){
+    width: $width;
+    height: 3rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    background-color: #323232;
+    color: white;
+    border-radius: 4px;
+}
+
 // @MEDIA QUERIES
 
 @mixin desk {
