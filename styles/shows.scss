@@ -3,9 +3,18 @@
 @import './partials/font-face';
 
 
-// .nav__links--shows{
+.nav__links--shows {
 
-// }
+    border-bottom: 1px solid white;
+
+    @include tablet {
+        border-bottom: 1px solid white;
+    }
+
+    @include desk {
+        border-bottom: 1px solid white;
+    }
+}
 
 .hero_shows{
     background-image: url("../Assets/Images/hero-shows.jpg");
@@ -25,6 +34,12 @@
         right:0;
         bottom:0;
     }
+
+    @include tablet{
+        height: 41.875em;
+        position: relative;
+        top: 4.5rem;
+    }
 }
 
 .hero__shows--heading{
@@ -34,6 +49,23 @@
     font-family: "Avenir-Next-bold";
     margin-left: 1rem;
     margin-right: 1rem;
+
+    @include tablet{
+        @include text(60px, 68px);
+        width: 33.5rem;
+    }
+
+    @include desk {
+        margin-top: 3rem;
+        margin-left: 4.375rem;
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 767px){
+        align-self: center;
+    }
+    @media screen and (min-width: 771px) and (max-width: 1199px){
+        align-self: center;
+      }
 }
 
 .hero__shows--subheading{
@@ -42,12 +74,42 @@
     font-family: "Avenir-Next-bold";
     margin-top: 4rem;
     margin-left: 1rem;
+
+    @include tablet{
+        margin-top: 6rem;
+        @include text (1.5rem, 2rem);
+    }
+
+    @include desk{
+        margin-top: 10rem;
+        margin-left: 4.375rem;
+    }
 }
 
 .hero__song{
     z-index: 2;
     align-self: center;
     margin-top: 4rem;
+
+    @include tablet {
+        @include iframe;
+        align-self: flex-start;
+        margin-left: 1rem;
+    }
+
+    @include tablet {
+        @include iframe;
+    }
+
+    @include desk {
+        position: relative;
+        left: 40.875rem;
+        bottom: 17.0625rem;
+    }
+    @media screen and (min-width: 771px) and (max-width: 1199px){
+      align-self: flex-end;
+      margin-right: 2rem;
+    }
 }
 
 
@@ -64,11 +126,64 @@ main{
     color: #323232;
     align-self: flex-start;
     margin:2rem 0 2.5rem 1rem;
+
+    @include tablet{
+        @include text(36px, 44px);
+    }
+
+    @include desk{
+        margin-top: 3rem;
+        @include text(36px, 44px)
+    }
+    @media screen and (min-width: 500px) and (max-width: 767px){
+        align-self: center;
+    }
+}
+
+.mainContainer{
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet{
+        position: relative;
+        top: 4.4375rem;
+        margin-bottom: 3rem;
+    } 
+    
+    @include desk {
+        align-items: flex-end;
+        width: 67.5rem;
+    }
+
 }
 
 .container{
     width: 18rem;
     border-bottom: 1px solid $divider;
+
+    @include tablet{
+    width: 45rem;
+    display: flex;
+    justify-content: space-around;
+    }
+
+    @include desk {
+        width: 50.25rem;
+    }
+    @media screen and (min-width: 500px) and (max-width: 767px){
+          
+    }
+}
+
+.container__inBox {
+
+    @media screen and (min-width: 500px) and (max-width: 767px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .title{
@@ -90,4 +205,11 @@ main{
 
 .section__btn{
     @include btn (18rem);
+
+    @include tablet{
+        @include btn-Tablet-desk;
+    }
+    @include tablet{
+        @include btn-Tablet-desk;
+    }
 }

@@ -25,6 +25,11 @@
     line-height: $height;
 }
 
+@mixin btn-Tablet-desk {
+    width: 10rem;
+    height: 3rem;
+}
+
 
 // MOBILE 
 
@@ -87,6 +92,11 @@
     background-color: #323232;
     color: white;
     border-radius: 4px;
+}
+
+@mixin iframe {
+    width: 436px;
+    height: 146px;
 }
 
 // @MEDIA QUERIES

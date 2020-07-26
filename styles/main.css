@@ -166,6 +166,7 @@
           justify-content: center;
   font-size: 0.875rem;
   line-height: 1.375rem;
+  font-family: "Avenir-Next-demi";
 }
 
 @media screen and (min-width: 340px) and (max-width: 767px) {
@@ -201,6 +202,10 @@
   .nav__links {
     margin-right: 3.5rem;
   }
+}
+
+.nav__links--bio {
+  border-bottom: 1px solid white;
 }
 
 .hero__image {
@@ -624,6 +629,21 @@
   }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1199px) {
+  .comments {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .comments__heading {
   margin-left: 1rem;
 }
@@ -685,6 +705,12 @@
 }
 
 .comments__input {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 14rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -724,6 +750,13 @@
   }
 }
 
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  .user__name,
+  .user__comment {
+    width: 100%;
+  }
+}
+
 .comments__form {
   width: 14rem;
   display: -webkit-box;
@@ -734,6 +767,12 @@
 @media screen and (min-width: 768px) {
   .comments__form {
     width: 36.375rem;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  .comments__form {
+    width: 80%;
   }
 }
 
@@ -790,6 +829,12 @@
 @media screen and (min-width: 1200px) {
   .comment {
     width: 28.75rem;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  .comment {
+    width: 100%;
   }
 }
 
@@ -879,10 +924,10 @@
   margin-right: 0.625rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .avatar--mod {
-    -webkit-transform: translateX(-50px);
-            transform: translateX(-50px);
+    margin-right: 0px;
+    left: 1rem;
   }
 }
 
@@ -926,6 +971,12 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   width: 14.625rem;
+}
+
+@media screen and (min-width: 321px) and (max-width: 767px) {
+  .comments__smallCont {
+    width: 90%;
+  }
 }
 
 .footer {

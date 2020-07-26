@@ -126,6 +126,3 @@ console.log(comment);
     form.reset()
 } );
 
-
-
-// \event.preventDefault()

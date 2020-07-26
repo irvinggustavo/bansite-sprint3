@@ -21,24 +21,24 @@ let titles = [];
 let paragraphs = [];
 let btns = [];
 
-
-// SUBHEADING
-let subHeading = document.createElement('h1');
-subHeading.innerText = 'Shows';
-subHeading.classList.add('subHeading');
-document.querySelector('main').appendChild(subHeading);
-
-
 // ARTICLE
 
 let mainContainer = elemt('article', 'mainContainer');
 document.querySelector('main').appendChild(mainContainer);
 
+// SUBHEADING
+let subHeading = document.createElement('h1');
+subHeading.innerText = 'Shows';
+subHeading.classList.add('subHeading');
+mainContainer.appendChild(subHeading);
+// document.querySelector('main').appendChild(subHeading);
+
 // CONTAINERS
 
 for (let i = 0; i < 6; i ++){
     let container = elemt('section', 'container');
-    document.querySelector('main').appendChild(container);
+    mainContainer.appendChild(container);
+    // document.querySelector('main').appendChild(container);
     sections.push(container);
     console.log(container);
 };
