@@ -539,6 +539,10 @@
     margin-top: 0;
     @include text(14px, 22px);
     font-family: "Avenir-Next-bold";
+
+    @media screen and (min-width:321px) and (max-width:767px){
+        margin-left: 1.5rem;
+    }
 }
 
 .comments__date{
@@ -570,6 +574,21 @@
         margin-right: 0;
         margin-left: 1.25rem;
     }
+    @media screen and (min-width: 321px) and (max-width: 767px) {
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+
+    // @media screen and (min-width: 502px) and (max-width: 766px){
+    //     width: 70%;
+    // }
+
+    @media screen and (min-width: 769px) and (max-width: 1199px) {
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
 }
 
 .comments__avatar{
@@ -591,20 +610,20 @@
        height: 3rem;
         margin-right: 0;
     }
+
+    @media screen and (min-width: 321px) and (max-width: 767px) {
+       margin-right: 1rem;
+    }
 }
 
 .avatar--mod{
     margin-right: 0.625rem;
    
-    // @include tablet{
-    //     transform: translateX(-50px);
-
-    // }
     @include desk {
         margin-right: 0px;
         left: 1rem;
     }
-    @media screen and {(min-width: 825px) and (max-width: 1199px)
+    @media screen and (min-width: 825px) and (max-width: 1199px){
          width: 3rem;
          height: 3rem;
     }
@@ -616,7 +635,6 @@
 }
 
 .comments__innerB{
-    // height: 2.6875rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -634,7 +652,7 @@
     width: 14.625rem;
 
     @media screen and (min-width: 321px) and (max-width: 767px){
-        width: 90%;
+        width: 80%;
     }
     
 }

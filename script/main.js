@@ -1,10 +1,4 @@
 
-let a = new Date(1983, 05, 25);
-b = a.toDateString()
-
- console.log(b)
-
-
 let = oldUserNames = ['Micheal Lyons', 'Gary Wong', 'Theodore Duncan'];
 let = oldComments = 
 ["They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.",
@@ -14,13 +8,6 @@ let = oldComments =
 let dates = ['12/18/2018', '12/12/2018', '11/15/2018']
 
 let article = document.querySelector(".comments");
-console.log(article);
-
-// HELPER FUCTION DATE
-
-const dateStamp = () => {
-
-}
 
 // HELPER FUCTION  AVATAR
 const placeHolderAvatar = (parent) =>{
@@ -81,7 +68,7 @@ displaydefault(oldUserNames, oldComments, dates);
 // INPUT SECTION
 
 const form = document.getElementById('comments__form');
-// console.log(comment);
+
 form.addEventListener('submit', function (event) {
     event.preventDefault();
 
