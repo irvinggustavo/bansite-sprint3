@@ -376,63 +376,136 @@
 .comments{
     margin-top: 40px;
     position: relative;
-    top: 3.75rem
+    top: 3.75rem;
+
+    @include desk {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 .comments__heading{
     margin-left: 1rem;
+    
+    @include desk{
+       margin-left:3.4375rem;
+       align-self: baseline;
+    }
 }
 
-.comments__avatar{
-    margin: 0 .5rem 0 1rem;
-    width: 3.375rem;
-    height: 3.375rem;
-    border-radius: 50%;
-}
+
 .label{
     @include text(12px, 20px);
     color: $labels-text-color;
+
+        @include desk {
+            margin-left: 1.25rem;
+        }
 }
+
 .user__name{
     @include inputs;
     height: 3rem;
     margin-bottom: 2rem;
     background-color: $text-bg-field-color;
+
+    @include tablet{
+    width: 32.875rem;
+    } 
+    @include desk{
+        width: 28.75rem;
+    } 
 }
 .user__comment{
     width: 14rem;
     height: 6rem;
+
+    @include tablet{
+        width: 32.875rem;
+        }  
+     @include desk{
+        width: 28.75rem;
+     }
+
 }  
 .comments__input{
     @include inputs;
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    justify-content: space-evenly;
+
+        @include desk {
+            justify-content: center;
+        }
 }
 
 .bg_inputs{
     background-color: $text-bg-field-color;
-    
+    transition: 0.3s;
+    padding-left: 1rem;
+
         &:focus{
-            border: 1px solid black;
+            border: 1px solid black;  
+        }
+        @include desk{
+            margin: .5rem 1.5rem 1.5rem 1.25rem;
+            
         }
     }
 
 
 .comments__form{
     width: 14rem;
-    display: flex;   
+    display: flex;  
+    
+    @include tablet{
+        width: 36.375rem;
+        // transform: translateX(-33px);
+    }
 }
 
 .comments__btn{
     @include btn(14rem);
     margin-bottom: 0;
+
+    &:hover{
+        background-color: #0065AD;
+    }
+
+    @include tablet{
+        position: relative;
+        left: 57%;
+    }
+
+    @include desk{
+        width: 3rem;
+        width: 160px;
+        margin-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        left: 64%;
+    }
 }
 
 // COMMENTS
 
 .comment{
+    overflow: auto;
+    width: 14.625em;
     margin-top: 1rem;
     margin-bottom: 1.5rem;
     font-family: "Avenir-Next";
+    text-align: justify;
+
+    @include tablet{
+        width: 32.5rem;
+    }
+    @include desk{
+        width: 28.75rem;
+    }
 }
 .comments__userN{
     margin-bottom: 0;
@@ -456,13 +529,55 @@
     align-items: flex-end;
     margin-right: 1rem;
     height: 11.5rem;
-    // width: 14.625rem;
+
+    @include tablet{
+        align-items: center;
+        width: 32.5rem;
+        align-items: center;
+    }
+
+    @include desk {
+        display: flex;
+        width: 460px;
+        align-items: flex-start;
+        margin-right: 0;
+        margin-left: 1.25rem;
+    }
 }
 
 .comments__avatar{
     align-self: flex-start;
     position: relative;
     top: 1.875em;
+    left: 1rem;
+    margin: 0;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+
+    @include tablet{
+        left: 4.375rem;
+    }
+
+    @include desk {
+       width: 3rem;
+       height: 3rem;
+        margin-right: 0;
+    }
+}
+
+.avatar--mod{
+    margin-right: 0.625rem;
+   
+    @include tablet{
+        transform: translateX(-50px);
+
+    }
+}
+.avatar--tranform{
+    @include desk {
+        transform: translateX(-123px);;
+    } 
 }
 
 .comments__innerB{
@@ -470,6 +585,11 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    @include tablet{
+        justify-content: space-between;
+        width: 11.5625rem;
+    }
 }
 
 .comments__smallCont{

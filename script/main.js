@@ -27,10 +27,9 @@ const placeHolderAvatar = (parent) =>{
 
     let avatar = document.createElement('div');
     parent.appendChild(avatar);
-    avatar.classList.add('comments__avatar')
+    avatar.classList.add('comments__avatar');
+    avatar.classList.add('avatar--tranform')
     avatar.style.backgroundColor ='#AFAFAF';
-    avatar.style.width ='2rem';
-    avatar.style.height ='2rem';
     avatar.style.borderRadius ='50%';
 
     return avatar
