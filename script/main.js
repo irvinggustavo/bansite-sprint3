@@ -1,15 +1,14 @@
 
-let = oldUserNames = ['Micheal Lyons', 'Gary Wong', 'Theodore Duncan'];
-let = oldComments = 
-["They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.",
-"Every time I see him shred I feel so motivated to get off my couch and hop on my board. He’s so talented! I wish I can ride like him one day so I can really enjoy myself!",
-"How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He’s definitely my favorite ever!"
-];
-let dates = ['12/18/2018', '12/12/2018', '11/15/2018']
+//  API URL & API KEY
 
+const springAPI = 'https://project-1-api.herokuapp.com/'
+const APIkey = "f1c2f231-38ad-4535-b891-a0a834c0b188"
+
+
+// create a father container for comments
 let article = document.querySelector(".comments");
 
-// HELPER FUCTION  AVATAR
+// create an Avatar
 const placeHolderAvatar = (parent) =>{
 
     let avatar = document.createElement('div');
@@ -22,50 +21,70 @@ const placeHolderAvatar = (parent) =>{
     return avatar
 };
 
-// HELPER FUCTION  DISPLAY DEFAULT
+/* Retrieve  data from the API (comments, name, timestamp) 
+& create elements to display the data using a for loop and DOM manipulation. 
+Use the reverse method  to change the position of the comments
+in the page (newest at the top).
+ */
 
-const displaydefault = (arr1, arr2, arr3 ) => {
+axios
+    .get(`${springAPI}comments/?api_key=${APIkey}`)
+    .then(commentsResult => {
 
-    for(let i = 0; i < arr1.length; i++){
+       let reverse = commentsResult.data.reverse()
 
-        let defaultContainer = document.createElement('div');
-        defaultContainer.classList.add('comments__default');
-        article.appendChild(defaultContainer);
+        for (let i = 0; i < reverse.length; i++){
+           
 
-        placeHolderAvatar(defaultContainer);
+            let defaultContainer = document.createElement('div');
+            defaultContainer.classList.add('comments__default');
+            article.appendChild(defaultContainer);
 
-        let defaultinnercontainner = document.createElement('div');
-        defaultinnercontainner.classList.add('comments__smallCont');
-        defaultContainer.appendChild(defaultinnercontainner);
+            placeHolderAvatar(defaultContainer);
 
-        
-        let defaultinnerDiv = document.createElement('div');
-        defaultinnerDiv.classList.add('comments__innerB');
-        defaultinnercontainner.appendChild(defaultinnerDiv);
+            let defaultinnercontainner = document.createElement('div');
+            defaultinnercontainner.classList.add('comments__smallCont');
+            defaultContainer.appendChild(defaultinnercontainner);
 
+            let defaultinnerDiv = document.createElement('div');
+            defaultinnerDiv.classList.add('comments__innerB');
+            defaultinnercontainner.appendChild(defaultinnerDiv);
 
-        let defaultUserName = document.createElement('h3');
-        defaultUserName.classList.add('comments__userN');
-        defaultinnerDiv.appendChild(defaultUserName);
-        defaultUserName.innerText = arr1[i];
+            let defaultUserName = document.createElement('h3');
+            defaultUserName.classList.add('comments__userN');
+            defaultinnerDiv.appendChild(defaultUserName);
+            defaultUserName.innerText =commentsResult.data[i].name;
 
-        let oldDate = document.createElement('h3');
-        oldDate.classList.add('comments__date');
-        defaultinnerDiv.appendChild(oldDate);
-        oldDate.innerText = arr3[i];
-
-        let defaultP = document.createElement('p');
-        defaultP.classList.add('comment');
-        defaultinnercontainner.appendChild(defaultP);
-        defaultP.innerText = arr2[i];
-
-    }
-}
-
-displaydefault(oldUserNames, oldComments, dates);
+            let oldDate = document.createElement('h3');
+            oldDate.classList.add('comments__date');
+            defaultinnerDiv.appendChild(oldDate);
+            oldDate.innerText = commentsResult.data[i].timestamp;
 
 
-// INPUT SECTION
+            let defaultP = document.createElement('p');
+            defaultP.classList.add('comment');
+            defaultinnercontainner.appendChild(defaultP);
+            defaultP.innerText = commentsResult.data[i].comment;
+        }
+    // displays a message in the console and  the web page in case of an error
+    }).catch(err =>{
+        console.log('Oops, we F@$$%#% up!', err)
+        let error = document.createElement('h1');
+        error.classList.add('error');
+        article.appendChild(error);
+        error.innerText = "we are very sorry for the inconvenience, new Developer, WE F!$%#@% UP!!!!!"
+    });
+    
+
+
+/* INPUT SECTION
+Targets the HTML form using a query selector and an eventlistener 
+to stop the page reload and save the user's DATA.
+Create and Obj  to make a POST request to API.
+Reset the form after sumit.
+Reload the page to trigger  the the the GET request from API comments
+and update the page.
+*/
 
 const form = document.getElementById('comments__form');
 
@@ -74,42 +93,19 @@ form.addEventListener('submit', function (event) {
 
     let userN = event.target.username.value;
     let comment = event.target.comments.value;
+   
 
-console.log(userN);
-console.log(comment);
+    let newComment = {
+        name: userN,
+        comment: comment
+    }
 
-    let container = document.createElement('div');
-    container.classList.add('comments__default');
-    article.appendChild(container);
+     let  request = axios.
+                 post(`${springAPI}comments/?api_key=${APIkey}`,newComment )
 
-            // PLACEHOLDER ....   
-    placeHolderAvatar(container);
-
-    let innercontainner = document.createElement('div');
-    innercontainner.classList.add('comments__smallCont');
-    container.appendChild(innercontainner);
-
-        
-    let innerDiv = document.createElement('div');
-    innerDiv.classList.add('comments__innerB');
-    innercontainner.appendChild(innerDiv);
-
-    let name = document.createElement('h3');
-    name.classList.add('comments__userN')
-    innerDiv.appendChild(name);
-    name.innerText = userN;
-    oldUserNames.push(name);
-
-    let Date = document.createElement('h3');
-    Date.classList.add('comments__date');
-    innerDiv.appendChild(Date);
-
-    let userComment = document.createElement('p');
-    userComment.classList.add('comment')
-    userComment.innerText = comment;
-    innercontainner.appendChild(userComment);
-    oldComments.push(userComment);
+    console.dir(request)
 
     form.reset()
+    location.reload();
 } );
 

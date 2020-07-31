@@ -184,7 +184,12 @@ main{
         flex-direction: column;
         align-items: center;
     }
-}
+
+    @media screen and (min-width: 770px) and (max-width: 1200px){
+        width: 100px;
+        }
+    }
+
 
 .title{
     color: $labels-text-color;
@@ -195,6 +200,7 @@ main{
 .paragraph{
     font-family: "Avenir-Next";
     @include text(13px, 18px)
+    
 }
 
 .container__date{

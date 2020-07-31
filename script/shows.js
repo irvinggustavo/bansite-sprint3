@@ -1,47 +1,51 @@
 
-//  HELPER FUNCTIONs 
+//  API URL & API KEY
 
+const springAPI = 'https://project-1-api.herokuapp.com/'
+const APIkey = "f1c2f231-38ad-4535-b891-a0a834c0b188"
+
+/* HELPER FUNCTION
+create  an element */
 const elemt = (element, className) =>{
     let elm = document.createElement(element);
     elm.classList.add(className);
     return elm;
 };
 
-const addContent = (dates, querySelector) =>{
-    let datesParag = document.querySelectorAll(querySelector);
-    for(let i = 0; i < datesParag.length; i++){
-        datesParag[i].innerText = dates[i];
-        console.log(datesParag)
-    }
-}
-
+/* store value for future use */
 let sections = [];
 let innnerboxes = [];
 let titles = [];
 let paragraphs = [];
 let btns = [];
 
-// ARTICLE
-
+/* ARTICLE
+create a father container for comments */
 let mainContainer = elemt('article', 'mainContainer');
 document.querySelector('main').appendChild(mainContainer);
 
-// SUBHEADING
+/* SUBHEADING */
 let subHeading = document.createElement('h1');
 subHeading.innerText = 'Shows';
 subHeading.classList.add('subHeading');
 mainContainer.appendChild(subHeading);
 
-// CONTAINERS
 
+/* CONTAINERS
+Run a for loop creating 6 containers and append them to main container(article) 
+& push every contatiner to the sections array  for future use */
 for (let i = 0; i < 6; i ++){
     let container = elemt('section', 'container');
     mainContainer.appendChild(container);
     sections.push(container);
-    console.log(container);
 };
 
-// INNER CONTAINERS
+
+/* INNER CONTAINERS 
+Declare a forEach method on the sections array, iterating 3 times on every index,
+ creating an element <div> & <btn> on every iteration & appending every one of them to
+a container in groups.
+*/
 sections.forEach(section =>{
     for(let i = 0; i < 3; i ++){
         let innerbox = elemt('div', 'container__inBox');
@@ -54,9 +58,10 @@ sections.forEach(section =>{
     btn.innerText = 'BUY TICKETS'
 }) 
 
-//  TITLES AND TEXT
 
-
+/*  TITLES AND TEXT
+ Declare a forEach method on the innnerboxes array, creating  elements <h2> & <p> on every
+iteration & appending every one of them to an index (class = "container__inBox")*/
 innnerboxes.forEach(box =>{
     let title = elemt('h2', 'title');
     titles.push(title);
@@ -67,6 +72,8 @@ innnerboxes.forEach(box =>{
     box.appendChild(p);   
 });
 
+/* Using a <querysellectorall> take a node list and save on variable to declare 
+a forEach method on it, adding static text to and Index on every iteration. */
 let dateTitles = document.querySelectorAll('.container > :nth-child(1) h2');
 dateTitles.forEach( title =>{
 title.innerText = 'DATE';
@@ -81,26 +88,40 @@ let locationTitles = document.querySelectorAll('.container > :nth-child(3) h2');
 locationTitles.forEach( title =>{
 title.innerText = 'LOCATION';
 });
-   
-//  INNER TEXT
 
-let dates =['Mon Dec 17 2018', 'Tue Jul 18 2019', 'Fri Jul 22 2019', 
-'Sat Aug 12 2019','Fri Sep 05 2019', 'Wed Aug 11 2019'];
 
-let venues =['Ronald Lane', 'Pier 3 East', 'View Loungue', 'Hyatt Agency', 'Moscow Center', 'Pres Club']
+/* INNER TEXT
+ Using a <querysellectorall> take a node list and save on variable  for future use*/
+let datesTi = document.querySelectorAll ('.container > :nth-child(1) p');
+let venues  = document.querySelectorAll ('.container > :nth-child(2) p');
+let locations = document.querySelectorAll ('.container > :nth-child(3) p')
 
-addContent(dates, '.container > :nth-child(1) p');
-addContent(venues, '.container > :nth-child(2) p');
+/* Make a GET request promise to the API retrieving data from "showdates" section.
+Run a loop using the arrays above adding dynamic data from the API Object to every index. */
+axios
+    .get(`${springAPI}showdates/?api_key=${APIkey}`)
+    .then (showsResults =>{
+    
+        for (let i = 0; i < datesTi.length; i++){
+            datesTi[i].innerText = showsResults.data[i].date
+        }
 
-let place = document.querySelectorAll('.container > :nth-child(3) p');
- place.forEach( i => {
-    i.innerText = 'San Francisco, CA';
-});
+        for (let i = 0; i < venues.length; i++){
+            venues[i].innerText = showsResults.data[i].place      
+        }
 
-let dateStyle = document.querySelectorAll('.container > :nth-child(1) p');
-dateStyle.forEach( i => {
-    i.classList.add('container__date'); 
-});
+        for (let i = 0; i < locations.length; i++){
+            locations[i].innerText = showsResults.data[i].location
+        }
+    })
+     /* displays a message in the console and  the web page in case of an error */
+    .catch(err =>{
+        console.log('Oops, we F@$$%#% up!', err)
+        let error = document.createElement('h1');
+        error.classList.add('error');
+        mainContainer.appendChild(error);
+        error.innerText = "we are very sorry for the inconvenience, new Developer!!!!!"
+    })
 
 
 
