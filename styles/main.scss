@@ -143,7 +143,7 @@
     }
 }
 
-                    // HERO
+                // HERO
 
 .hero__image {
     @include hero;
@@ -341,7 +341,7 @@
  }
 
 
-                        //  PHOTO GALLERY
+                 //  PHOTO GALLERY
 
 .img__container{
     
@@ -384,7 +384,7 @@
             @include img-tab-desk;
         }
 }
-// JOIN THE CONVERSATION
+            // JOIN THE CONVERSATION
 
 .comments{
     margin-top: 40px;
@@ -493,7 +493,6 @@
 
     @include tablet{
         width: 36.375rem;
-        // transform: translateX(-33px);
     }
     @media screen and (min-width: 321px) and (max-width: 767px){
         width: 80%;
@@ -525,7 +524,7 @@
     }
 }
 
-// COMMENTS
+                // COMMENTS
 
 .comment{
     overflow: auto;
@@ -593,9 +592,6 @@
         overflow: auto;
     }
 
-    // @media screen and (min-width: 502px) and (max-width: 766px){
-    //     width: 70%;
-    // }
 
     @media screen and (min-width: 769px) and (max-width: 1199px) {
         justify-content: center;
@@ -613,7 +609,9 @@
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
-
+    background-color: #AFAFAF;
+    border-radius: 50%;
+    
     @include tablet{
         left: 4.375rem;
     }
@@ -672,7 +670,7 @@
 
 
 
- // FOOTER
+                 // FOOTER
 
 .footer{
     @include container;

@@ -1,119 +1,135 @@
-
 //  API URL & API KEY
 
-const springAPI = 'https://project-1-api.herokuapp.com/'
-const APIkey = "f1c2f231-38ad-4535-b891-a0a834c0b188"
-
+const springAPI = "https://project-1-api.herokuapp.com/";
+const APIkey = "f1c2f231-38ad-4535-b891-a0a834c0b188";
 
 // create a father container for comments
 let article = document.querySelector(".comments");
 
 // create an Avatar
-const placeHolderAvatar = (parent) =>{
-
-    let avatar = document.createElement('div');
-    parent.appendChild(avatar);
-    avatar.classList.add('comments__avatar');
-    avatar.classList.add('avatar--tranform')
-    avatar.style.backgroundColor ='#AFAFAF';
-    avatar.style.borderRadius ='50%';
-
-    return avatar
+const placeHolderAvatar = (parent) => {
+  let avatar = document.createElement("div");
+  parent.appendChild(avatar);
+  avatar.classList.add("comments__avatar");
+  avatar.classList.add("avatar--tranform");
+  return avatar;
 };
 
 /* Retrieve  data from the API (comments, name, timestamp) 
-& create elements to display the data using a for loop and DOM manipulation. 
+& create elements to display the data using a for loop and DOM manipulation. ∏
 Use the reverse method  to change the position of the comments
 in the page (newest at the top).
  */
-
- function displayComment() {
-
-axios
+function displayComment() {
+  axios
     .get(`${springAPI}comments/?api_key=${APIkey}`)
-    .then(commentsResult => {
+    .then((commentsResult) => {
+      let reverse = commentsResult.data.reverse();
 
-       let reverse = commentsResult.data.reverse()
-console.log(reverse)
-        for (let i = 0; i < reverse.length; i++){
-           
+      for (let i = 0; i < reverse.length; i++) {
+        let defaultContainer = document.createElement("div");
+        defaultContainer.classList.add("comments__default");
+        article.appendChild(defaultContainer);
 
-            let defaultContainer = document.createElement('div');
-            defaultContainer.classList.add('comments__default');
-            article.appendChild(defaultContainer);
+        placeHolderAvatar(defaultContainer);
 
-            placeHolderAvatar(defaultContainer);
+        let defaultinnercontainner = document.createElement("div");
+        defaultinnercontainner.classList.add("comments__smallCont");
+        defaultContainer.appendChild(defaultinnercontainner);
 
-            let defaultinnercontainner = document.createElement('div');
-            defaultinnercontainner.classList.add('comments__smallCont');
-            defaultContainer.appendChild(defaultinnercontainner);
+        let defaultinnerDiv = document.createElement("div");
+        defaultinnerDiv.classList.add("comments__innerB");
+        defaultinnercontainner.appendChild(defaultinnerDiv);
 
-            let defaultinnerDiv = document.createElement('div');
-            defaultinnerDiv.classList.add('comments__innerB');
-            defaultinnercontainner.appendChild(defaultinnerDiv);
+        let defaultUserName = document.createElement("h3");
+        defaultUserName.classList.add("comments__userN");
+        defaultinnerDiv.appendChild(defaultUserName);
+        defaultUserName.innerText = commentsResult.data[i].name;
 
-            let defaultUserName = document.createElement('h3');
-            defaultUserName.classList.add('comments__userN');
-            defaultinnerDiv.appendChild(defaultUserName);
-            defaultUserName.innerText =commentsResult.data[i].name;
+        let oldDate = document.createElement("h3");
+        oldDate.classList.add("comments__date");
+        defaultinnerDiv.appendChild(oldDate);
+        oldDate.innerText = commentsResult.data[i].timestamp;
 
-            let oldDate = document.createElement('h3');
-            oldDate.classList.add('comments__date');
-            defaultinnerDiv.appendChild(oldDate);
-            oldDate.innerText = commentsResult.data[i].timestamp;
-
-
-            let defaultP = document.createElement('p');
-            defaultP.classList.add('comment');
-            defaultinnercontainner.appendChild(defaultP);
-            defaultP.innerText = commentsResult.data[i].comment;
-        }
+        let defaultP = document.createElement("p");
+        defaultP.classList.add("comment");
+        defaultinnercontainner.appendChild(defaultP);
+        defaultP.innerText = commentsResult.data[i].comment;
+      }
     })
 
     // displays a message in the console and  the web page in case of an error
-    .catch(err =>{
-        console.log('Oops, we F@$$%#% up!', err)
-        let error = document.createElement('h1');
-        error.classList.add('error');
-        article.appendChild(error);
-        error.innerText = "we are very sorry for the inconvenience, new Developer, WE F!$%#@% UP!!!!!"
+    .catch((err) => {
+      console.log("Oops, we F@$$%#% up!", err);
+      let error = document.createElement("h1");
+      error.classList.add("error");
+      article.appendChild(error);
+      error.innerText =
+        "we are very sorry for the inconvenience, new Developer, WE F!$%#@% UP!!!!!";
     });
-    
 }
-displayComment()
+displayComment();
 
 /* INPUT SECTION
 Targets the HTML form using a query selector and an eventlistener 
 to stop the page reload and save the user's DATA.
 Create and Obj  to make a POST request to API.
 Reset the form after sumit.
-Reload the page to trigger  the the the GET request from API comments
-and update the page.
+Update the comments section usin HTTP methods  POst & GET.
 */
 
-const form = document.getElementById('comments__form');
+const form = document.getElementById("comments__form");
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    let userN = event.target.username.value;
-    let comment = event.target.comments.value;
-   
+  let userN = event.target.username.value;
+  let comment = event.target.comments.value;
 
-    let newComment = {
-        name: userN,
-        comment: comment
-    }
+  let newComment = {
+    name: userN,
+    comment: comment,
+  };
 
-         axios
-                .post(`${springAPI}comments/?api_key=${APIkey}`,newComment )
-                .then(result => {
-                    result
-                })
+  axios
+    .post(`${springAPI}comments/?api_key=${APIkey}`, newComment)
+    .then((result) => {
+      result;
 
+      let megaContainer = document.createElement("div");
+      article.appendChild(megaContainer);
+      document.querySelectorAll(".comments__default").forEach((item) => {
+        megaContainer.appendChild(item);
+      });
+      megaContainer.innerText = "";
+    })
+    .catch((err) => {
+      console.log("Oops, we F@$$%#% up!", err);
+      let megaContainer = document.createElement("div");
+      article.appendChild(megaContainer);
+      document.querySelectorAll(".comments__default").forEach((item) => {
+        megaContainer.appendChild(item);
+      });
+      megaContainer.innerText = "WTF!!!!! new Developer, we F%#$%&!!!!!, WE are very SORRY";
+    });
 
-  
-    form.reset()
-    
-} );
+  axios
+    .get(`${springAPI}comments/?api_key=${APIkey}`, newComment)
+    .then((result) => {
+      result;
+      displayComment();
+    })
 
+    .catch((err) => {
+      console.log("Oops, we F@$$%#% up!", err);
+      let megaContainer = document.createElement("div");
+      article.appendChild(megaContainer);
+      document.querySelectorAll(".comments__default").forEach((item) => {
+        megaContainer.appendChild(item);
+      });
+      megaContainer.innerText =
+        "we are very sorry for the inconvenience, new Developer, we F%#$%&!!!!!";
+    });
+
+  form.reset();
+});
