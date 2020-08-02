@@ -8,11 +8,11 @@
     border-bottom: 1px solid white;
 
     @include tablet {
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid white;
     }
 
     @include desk {
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid white;
     }
 }
 
@@ -172,9 +172,11 @@ main{
     @include desk {
         width: 50.25rem;
     }
-    @media screen and (min-width: 500px) and (max-width: 767px){
-          
+    @media screen and (min-width: 768px) {
+          align-items: center;
     }
+
+
 }
 
 .container__inBox {
@@ -185,7 +187,7 @@ main{
         align-items: center;
     }
 
-    @media screen and (min-width: 770px) and (max-width: 1200px){
+    @media screen and (min-width: 768px) and (max-width: 1200px){
         width: 100px;
         }
     }
@@ -197,12 +199,21 @@ main{
     @include text(14px, 22px)
 }
 
+.hidden{
+    @media screen  and (min-width: 768px){
+        display: none;
+    }
+}
+
 .paragraph{
     font-family: "Avenir-Next";
     @include text(13px, 18px)
     
 }
 
+.container > :nth-child(1) p{
+    font-weight: bold;
+}
 .container__date{
     font-family: "Avenir-Next-bold";
     margin-top: 1rem;

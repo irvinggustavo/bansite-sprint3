@@ -72,6 +72,14 @@ innnerboxes.forEach(box =>{
     box.appendChild(p);   
 });
 
+/* Hope you like this one Josh */
+    let hidden = titles.slice(3)
+    hidden.forEach(i =>{
+    i.classList.add('hidden');
+    })
+
+
+
 /* Using a <querysellectorall> take a node list and save on variable to declare 
 a forEach method on it, adding static text to and Index on every iteration. */
 let dateTitles = document.querySelectorAll('.container > :nth-child(1) h2');

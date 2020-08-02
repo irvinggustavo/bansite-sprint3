@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Avenir-Next";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Regular.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-It.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Regular.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-It.otf") format("otf");
 }
 
 @font-face {
   font-family: "Avenir-Next-demi";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Demi.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-DemiIt.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Demi.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-DemiIt.otf") format("otf");
 }
 
 @font-face {
   font-family: "Avenir-Next-bold";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Bold.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-BoldIt.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Bold.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-BoldIt.otf") format("otf");
 }
 
 *, *:before, *:after {
@@ -179,9 +179,6 @@
 
 .nav__links a {
   text-decoration: none;
-}
-
-.nav__links a:visited {
   color: white;
 }
 
@@ -206,6 +203,18 @@
 
 .nav__links--bio {
   border-bottom: 1px solid white;
+}
+
+@media screen and (min-width: 768px) {
+  .nav__links--bio {
+    border-bottom: 2px solid white;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .nav__links--bio {
+    border-bottom: 2px solid white;
+  }
 }
 
 .hero__image {
@@ -757,11 +766,22 @@
   }
 }
 
+.user__comment {
+  resize: none;
+}
+
 .comments__form {
   width: 14rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 @media screen and (min-width: 768px) {
@@ -1097,6 +1117,7 @@
           justify-content: space-evenly;
   margin: 1rem;
   width: 41.25%;
+  height: 30px;
 }
 
 @media screen and (min-width: 768px) {
@@ -1104,7 +1125,6 @@
     -ms-flex-pack: distribute;
         justify-content: space-around;
     width: 9.25rem;
-    height: 2.75rem;
   }
 }
 
@@ -1118,6 +1138,11 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+}
+
+.footer__iconsimg {
+  width: 30px;
+  height: 30px;
 }
 
 .footer__logo {

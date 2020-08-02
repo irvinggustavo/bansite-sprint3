@@ -1,16 +1,16 @@
 @font-face {
   font-family: "Avenir-Next";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Regular.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-It.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Regular.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-It.otf") format("otf");
 }
 
 @font-face {
   font-family: "Avenir-Next-demi";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Demi.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-DemiIt.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Demi.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-DemiIt.otf") format("otf");
 }
 
 @font-face {
   font-family: "Avenir-Next-bold";
-  src: url("../4.0-Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Bold.otf") format("otf"), url("../4.0-Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-BoldIt.otf") format("otf");
+  src: url("../../Assets/Font/Avenir-Next-Pro-Lt/Linotype-AvenirNextLTPro-Bold.otf") format("otf"), url("../../Assets/Font/Avenir-Alternative/Linotype-AvenirNextLTPro-BoldIt.otf") format("otf");
 }
 
 .nav__links--shows {
@@ -19,13 +19,13 @@
 
 @media screen and (min-width: 768px) {
   .nav__links--shows {
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .nav__links--shows {
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid white;
   }
 }
 
@@ -275,6 +275,14 @@ main {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 @media screen and (min-width: 500px) and (max-width: 767px) {
   .container__inBox {
     display: -webkit-box;
@@ -290,7 +298,7 @@ main {
   }
 }
 
-@media screen and (min-width: 770px) and (max-width: 1200px) {
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   .container__inBox {
     width: 100px;
   }
@@ -303,10 +311,20 @@ main {
   line-height: 22px;
 }
 
+@media screen and (min-width: 768px) {
+  .hidden {
+    display: none;
+  }
+}
+
 .paragraph {
   font-family: "Avenir-Next";
   font-size: 13px;
   line-height: 18px;
+}
+
+.container > :nth-child(1) p {
+  font-weight: bold;
 }
 
 .container__date {

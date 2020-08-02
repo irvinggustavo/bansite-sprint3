@@ -27,12 +27,14 @@ Use the reverse method  to change the position of the comments
 in the page (newest at the top).
  */
 
+ function displayComment() {
+
 axios
     .get(`${springAPI}comments/?api_key=${APIkey}`)
     .then(commentsResult => {
 
        let reverse = commentsResult.data.reverse()
-
+console.log(reverse)
         for (let i = 0; i < reverse.length; i++){
            
 
@@ -66,8 +68,10 @@ axios
             defaultinnercontainner.appendChild(defaultP);
             defaultP.innerText = commentsResult.data[i].comment;
         }
+    })
+
     // displays a message in the console and  the web page in case of an error
-    }).catch(err =>{
+    .catch(err =>{
         console.log('Oops, we F@$$%#% up!', err)
         let error = document.createElement('h1');
         error.classList.add('error');
@@ -75,7 +79,8 @@ axios
         error.innerText = "we are very sorry for the inconvenience, new Developer, WE F!$%#@% UP!!!!!"
     });
     
-
+}
+displayComment()
 
 /* INPUT SECTION
 Targets the HTML form using a query selector and an eventlistener 
@@ -100,12 +105,15 @@ form.addEventListener('submit', function (event) {
         comment: comment
     }
 
-     let  request = axios.
-                 post(`${springAPI}comments/?api_key=${APIkey}`,newComment )
+         axios
+                .post(`${springAPI}comments/?api_key=${APIkey}`,newComment )
+                .then(result => {
+                    result
+                })
 
-    console.dir(request)
 
+  
     form.reset()
-    location.reload();
+    
 } );
 

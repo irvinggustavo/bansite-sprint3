@@ -68,11 +68,11 @@
             <h1 class= "comments__heading">Join the Conversation</h1>
             <section class= "comments__input">
                 <img class= "comments__avatar avatar--mod" src="./Assets/Images/user.jpg">
-                <form action="./script/main.js" method='POST' id= "comments__form">
-                    <label class= "label" for = "username">NAME</label><br>
-                    <input type = "text" name= "username" class="user__name bg_inputs" placeholder="user name"><br>
-                    <label class= "label" for= "comments">COMMENT</label><br>
-                    <textarea type= "text" name= "comments" class="user__comment bg_inputs" placeholder="Add a new comment"></textarea><br>
+                <form action="./script/main.js" method='POST' id= "comments__form" class="comments__form">
+                    <label class= "label" for = "username">NAME</label>
+                    <input type = "text" name= "username" class="user__name bg_inputs" placeholder="user name">
+                    <label class= "label" for= "comments">COMMENT</label>
+                    <textarea type= "text" name= "comments" class="user__comment bg_inputs" placeholder="Add a new comment"></textarea>
                     <button class="comments__btn"> COMMENT</button>
                 </form>
             </section>
