@@ -3,16 +3,27 @@
 const springAPI = "https://project-1-api.herokuapp.com/";
 const APIkey = "f1c2f231-38ad-4535-b891-a0a834c0b188";
 
-// create a father container for comments
+/* create a father container for comments */
 let article = document.querySelector(".comments");
 
-// create an Avatar
+/* create an Avatar */
 const placeHolderAvatar = (parent) => {
   let avatar = document.createElement("div");
   parent.appendChild(avatar);
   avatar.classList.add("comments__avatar");
   avatar.classList.add("avatar--tranform");
   return avatar;
+};
+
+/* Displays a ERROR message on th epage */
+const errorDiv = () => {
+  let errorMsg = document.createElement("div");
+  article.appendChild(errorMsg);
+  document.querySelectorAll(".comments__default").forEach((item) => {
+    errorMsg.appendChild(item);
+  });
+  errorMsg.innerText =
+    "we are very sorry for the inconvenience, new Developer, we F%#$%&!!!!!";
 };
 
 /* Retrieve  data from the API (comments, name, timestamp) 
@@ -56,18 +67,9 @@ function displayComment() {
         defaultinnercontainner.appendChild(defaultP);
         defaultP.innerText = commentsResult.data[i].comment;
       }
-    })
-
-    // displays a message in the console and  the web page in case of an error
-    .catch((err) => {
-      console.log("Oops, we F@$$%#% up!", err);
-      let error = document.createElement("h1");
-      error.classList.add("error");
-      article.appendChild(error);
-      error.innerText =
-        "we are very sorry for the inconvenience, new Developer, WE F!$%#@% UP!!!!!";
     });
-}
+  }
+
 displayComment();
 
 /* INPUT SECTION
@@ -105,30 +107,19 @@ form.addEventListener("submit", function (event) {
     })
     .catch((err) => {
       console.log("Oops, we F@$$%#% up!", err);
-      let megaContainer = document.createElement("div");
-      article.appendChild(megaContainer);
-      document.querySelectorAll(".comments__default").forEach((item) => {
-        megaContainer.appendChild(item);
-      });
-      megaContainer.innerText = "WTF!!!!! new Developer, we F%#$%&!!!!!, WE are very SORRY";
+      errorDiv();
     });
 
   axios
-    .get(`${springAPI}comments/?api_key=${APIkey}`, newComment)
-    .then((result) => {
+    .get(`${springAPI}comments/?api_key=${APIkey}`)
+    .then(result => {
       result;
       displayComment();
     })
 
     .catch((err) => {
       console.log("Oops, we F@$$%#% up!", err);
-      let megaContainer = document.createElement("div");
-      article.appendChild(megaContainer);
-      document.querySelectorAll(".comments__default").forEach((item) => {
-        megaContainer.appendChild(item);
-      });
-      megaContainer.innerText =
-        "we are very sorry for the inconvenience, new Developer, we F%#$%&!!!!!";
+      errorDiv();
     });
 
   form.reset();

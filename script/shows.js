@@ -10,6 +10,14 @@ const elemt = (element, className) => {
   elm.classList.add(className);
   return elm;
 };
+/* Displays a ERROr message on the page */
+const errorMsg = () => {
+  let error = document.createElement("h1");
+  error.classList.add("error");
+  mainContainer.appendChild(error);
+  error.innerText =
+    "we are very sorry for the inconvenience, new Developer, we F%#$%&!!!!!";
+};
 
 /* store value for future use */
 let sections = [];
@@ -117,9 +125,5 @@ axios
   /* displays a message in the console and  the web page in case of an error */
   .catch((err) => {
     console.log("Oops, we F@$$%#% up!", err);
-    let error = document.createElement("h1");
-    error.classList.add("error");
-    mainContainer.appendChild(error);
-    error.innerText =
-      "we are very sorry for the inconvenience, new Developer, we F%#$%&!!!!!";
+    errorMsg();
   });
